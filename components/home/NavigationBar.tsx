@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes"; // <-- Import useTheme
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { IconMenu2, IconX, IconSun, IconMoon } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
@@ -23,8 +24,9 @@ export default function NavigationBar() {
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
-  // Theme state
-  const [isDarkMode, setIsDarkMode] = useState(true); // Defaulting to true based on your layout.tsx
+  // Theme state from next-themes
+  const { theme, setTheme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   // Handle scroll effect
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -36,57 +38,62 @@ export default function NavigationBar() {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
-  // Initialize theme based on HTML class
+  // Wait until mounted to render theme toggle (prevents hydration mismatch)
   useEffect(() => {
-    const isDark = document.documentElement.classList.contains("dark");
-    setIsDarkMode(isDark);
+    setMounted(true);
   }, []);
 
-  // Theme toggle handler
+  // Determine actual theme (useful if user sets theme to 'system')
+  const currentTheme = theme === "system" ? systemTheme : theme;
+  const isDarkMode = currentTheme === "dark";
+
   const toggleTheme = () => {
-    const newTheme = !isDarkMode;
-    setIsDarkMode(newTheme);
-    if (newTheme) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    setTheme(isDarkMode ? "light" : "dark");
   };
 
   // Reusable Theme Button Component
-  const ThemeToggleButton = () => (
-    <button
-      onClick={toggleTheme}
-      className="relative flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-300"
-      aria-label="Toggle theme"
-    >
-      <AnimatePresence mode="wait" initial={false}>
-        {isDarkMode ? (
-          <motion.div
-            key="moon"
-            initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
-            animate={{ opacity: 1, rotate: 0, scale: 1 }}
-            exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
-            transition={{ duration: 0.2 }}
-            className="absolute"
-          >
-            <IconMoon size={20} />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="sun"
-            initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
-            animate={{ opacity: 1, rotate: 0, scale: 1 }}
-            exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
-            transition={{ duration: 0.2 }}
-            className="absolute"
-          >
-            <IconSun size={20} />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </button>
-  );
+  const ThemeToggleButton = () => {
+    // Show a skeleton circle before mounting to prevent layout shift
+    if (!mounted) {
+      return (
+        <div className="h-10 w-10 rounded-full bg-zinc-100 dark:bg-zinc-800" />
+      );
+    }
+
+    return (
+      <button
+        onClick={toggleTheme}
+        className="relative flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-300"
+        aria-label="Toggle theme"
+      >
+        <AnimatePresence mode="wait" initial={false}>
+          {isDarkMode ? (
+            <motion.div
+              key="moon"
+              initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+              animate={{ opacity: 1, rotate: 0, scale: 1 }}
+              exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
+              transition={{ duration: 0.2 }}
+              className="absolute"
+            >
+              <IconMoon size={20} />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="sun"
+              initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+              animate={{ opacity: 1, rotate: 0, scale: 1 }}
+              exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
+              transition={{ duration: 0.2 }}
+              className="absolute"
+            >
+              <IconSun size={20} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </button>
+    );
+  };
 
   return (
     <motion.div
