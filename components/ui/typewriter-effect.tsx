@@ -16,7 +16,7 @@ export const TypewriterEffect = ({
   className?: string;
   cursorClassName?: string;
 }) => {
-  // split text inside of words into array of characters
+  // Split text inside of words into an array of characters
   const wordsArray = words.map((word) => {
     return {
       ...word,
@@ -25,8 +25,10 @@ export const TypewriterEffect = ({
   });
 
   const [scope, animate] = useAnimate();
-  const isInView = useInView(scope);
   
+  // Use a slight margin so it starts typing right as it enters the view
+  const isInView = useInView(scope, { once: false, margin: "-10px" });
+
   useEffect(() => {
     if (isInView) {
       animate(
@@ -34,14 +36,16 @@ export const TypewriterEffect = ({
         {
           display: "inline-block",
           opacity: 1,
-          width: "fit-content",
         },
         {
-          duration: 0.3,
-          delay: stagger(0.1),
-          ease: "easeInOut",
+          duration: 0.5, // Much faster fade-in per character
+          delay: stagger(0.04, { startDelay: 0.2 }), // Natural typing speed with a slight initial pause
+          ease: "linear",
         }
       );
+    } else {
+      // Instantly reset if it goes out of view so it can retype smoothly
+      animate("span", { display: "none", opacity: 0 }, { duration: 0 });
     }
   }, [isInView, animate]);
 
@@ -53,17 +57,18 @@ export const TypewriterEffect = ({
             <div key={`word-${idx}`} className="inline-block">
               {word.text.map((char, index) => (
                 <motion.span
-                  initial={{ opacity: 0 }}
+                  // Let Framer Motion handle the initial hidden state, NOT Tailwind
+                  initial={{ opacity: 0, display: "none" }}
                   key={`char-${index}`}
                   className={cn(
-                    // Default colors if no custom class is passed
-                    "dark:text-white text-black opacity-0 hidden",
+                    "dark:text-white text-black", // Removed "opacity-0 hidden"
                     word.className
                   )}
                 >
                   {char}
                 </motion.span>
               ))}
+              {/* Ensure spaces are preserved between words */}
               &nbsp;
             </div>
           );
@@ -73,21 +78,29 @@ export const TypewriterEffect = ({
   };
 
   return (
-    <div className={cn("text-center flex justify-center items-center flex-wrap", className)}>
+    <div 
+      className={cn(
+        "text-center flex justify-center items-center flex-wrap gap-y-1", 
+        className
+      )}
+    >
       {renderWords()}
+      
+      {/* Blinking Cursor */}
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{
-          duration: 0.8,
+          duration: 0.6,
           repeat: Infinity,
           repeatType: "reverse",
+          ease: "easeInOut"
         }}
         className={cn(
-          "inline-block rounded-sm w-[3px] h-6 md:h-7 lg:h-8 bg-blue-500 ml-1",
+          "inline-block rounded-sm w-[3px] h-5 md:h-6 lg:h-8 bg-blue-500 ml-1 shrink-0",
           cursorClassName
         )}
-      ></motion.span>
+      />
     </div>
   );
 };
