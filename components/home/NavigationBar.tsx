@@ -13,8 +13,8 @@ const navItems = [
   { name: "Events", link: "/events" },
   { name: "Internships", link: "/internships" },
   { name: "Courses", link: "/courses" },
-  { name: "Our Work", link: "/our-work" },
-  { name: "About Us", link: "/about-us" },
+  // { name: "Our Work", link: "/our-work" },
+  // { name: "About Us", link: "/about-us" },
 ];
 
 export default function NavigationBar() {
