@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-//importing component
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
-// Note: Using the import path you requested, though the file you uploaded was named RippleCard.tsx
-import RippleGrid from '@/components/home/RippleCard';
+
+// Import the Boxes component from your new file
+// Note: Update this import path if your Backgroundbox.tsx is in a different folder
+import { Boxes } from "./Backgroundbox"; 
 
 export default function HeroSection() {
   const fadeUpVariant = {
@@ -26,18 +27,10 @@ export default function HeroSection() {
   return (
     <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center px-6 py-20 text-center overflow-hidden">
       
-      {/* RippleGrid Background Layer */}
-      <div className="absolute inset-0 z-0">
-        <RippleGrid
-          enableRainbow={false}
-          gridColor="#ffffff" 
-          rippleIntensity={0.005}
-          gridSize={12}
-          gridThickness={15}
-          mouseInteraction={false}
-          mouseInteractionRadius={1.2}
-          opacity={0.8}
-        />
+      {/* Interactive Boxes Background Layer */}
+      {/* pointer-events-auto allows the background boxes to detect mouse hovers */}
+      <div className="absolute inset-0 z-0 w-full h-full pointer-events-auto">
+        <Boxes />
       </div>
 
       {/* Existing Background Blur Element */}
@@ -53,17 +46,13 @@ export default function HeroSection() {
         </h1>
         
         {/* Responsive Typewriter Effect */}
-        <div className="mt-2 h-[60px] md:h-[40px] flex items-center justify-center pointer-events-auto">
+        <div className="mt-2 h-[40px] flex items-center justify-center pointer-events-auto w-full">
           <TypewriterEffect 
             words={typeWriterWords} 
-            className="text-xl md:text-2xl max-w-2xl" 
+            className="whitespace-nowrap text-sm sm:text-lg md:text-2xl max-w-2xl" 
           />
         </div>
         
-        {/* If you uncomment these buttons later, the 'pointer-events-auto' wrapper 
-          ensures they can still be clicked while allowing the canvas background 
-          to register mouse movements elsewhere.
-        */}
         {/* <div className="flex flex-wrap justify-center gap-4 mt-8 pointer-events-auto">
           <Link href="/courses" className="px-8 py-3.5 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/30 transition-all active:scale-95">
             Explore Courses
