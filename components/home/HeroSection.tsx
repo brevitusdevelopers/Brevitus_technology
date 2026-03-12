@@ -3,12 +3,33 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
+import { useState, useEffect } from "react";
 
-// Import the Boxes component from your new file
-// Note: Update this import path if your Backgroundbox.tsx is in a different folder
-import { Boxes } from "./Backgroundbox"; 
+// Import the DotGrid component
+import DotGrid from './DotGrid';
 
 export default function HeroSection() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Safely detect dark mode changes (works with Tailwind and next-themes)
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDarkMode(document.documentElement.classList.contains('dark'));
+    };
+
+    // Check initial theme on mount
+    checkTheme();
+
+    // Observe changes to the 'class' attribute on the <html> element
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const fadeUpVariant = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -24,19 +45,32 @@ export default function HeroSection() {
     { text: "Fly.", className: "text-emerald-600 dark:text-emerald-400 font-bold" },
   ];
 
+  // Dynamically set DotGrid colors based on the current theme
+  const gridBaseColor = isDarkMode ? "#271E37" : "#e4e4e7"; // Dark grey/purple vs Light Zinc
+  const gridActiveColor = isDarkMode ? "#5227FF" : "#2563eb"; // Bright Purple vs Bright Blue
+
   return (
     <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center px-6 py-20 text-center overflow-hidden">
       
-      {/* Interactive Boxes Background Layer */}
-      {/* pointer-events-auto allows the background boxes to detect mouse hovers */}
+      {/* Interactive DotGrid Background Layer */}
       <div className="absolute inset-0 z-0 w-full h-full pointer-events-auto">
-        <Boxes />
+        <DotGrid
+          dotSize={5}
+          gap={15}
+          baseColor={gridBaseColor}
+          activeColor={gridActiveColor}
+          proximity={120}
+          shockRadius={250}
+          shockStrength={5}
+          resistance={750}
+          returnDuration={1.5}
+        />
       </div>
 
       {/* Existing Background Blur Element */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/20 dark:bg-blue-600/20 blur-[120px] rounded-full -z-10 pointer-events-none" />
-      
-      {/* Content Layer (added relative and z-10 so it sits on top of the grid) */}
+      {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/20 dark:bg-blue-600/20 blur-[120px] rounded-full -z-10 pointer-events-none" />
+       */}
+      {/* Content Layer */}
       <motion.div 
         initial="hidden" animate="visible" variants={fadeUpVariant}
         className="relative z-10 max-w-4xl flex flex-col items-center gap-6 pointer-events-none"
