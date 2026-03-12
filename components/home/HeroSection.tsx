@@ -2,18 +2,15 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+//importing component
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 
-// Import the Boxes component from your new file
-// Note: Update this import path if your Backgroundbox.tsx is in a different folder
-import { Boxes } from "./Backgroundbox"; 
 
 export default function HeroSection() {
   const fadeUpVariant = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
-  
   const typeWriterWords = [
     { text: "Empowering", className: "text-zinc-600 dark:text-zinc-300 font-medium" },
     { text: "Students", className: "text-zinc-600 dark:text-zinc-300 font-medium" },
@@ -26,34 +23,24 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center px-6 py-20 text-center overflow-hidden">
-      
-      {/* Interactive Boxes Background Layer */}
-      {/* pointer-events-auto allows the background boxes to detect mouse hovers */}
-      <div className="absolute inset-0 z-0 w-full h-full pointer-events-auto">
-        <Boxes />
-      </div>
-
-      {/* Existing Background Blur Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/20 dark:bg-blue-600/20 blur-[120px] rounded-full -z-10 pointer-events-none" />
       
-      {/* Content Layer (added relative and z-10 so it sits on top of the grid) */}
       <motion.div 
         initial="hidden" animate="visible" variants={fadeUpVariant}
-        className="relative z-10 max-w-4xl flex flex-col items-center gap-6 pointer-events-none"
+        className="max-w-4xl flex flex-col items-center gap-6"
       >
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-black dark:text-white pointer-events-auto">
+        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-black dark:text-white">
           Brevitus <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">Technology</span>
         </h1>
-        
         {/* Responsive Typewriter Effect */}
-        <div className="mt-2 h-[40px] flex items-center justify-center pointer-events-auto w-full">
+        <div className="mt-2 h-[60px] md:h-[40px] flex items-center justify-center">
           <TypewriterEffect 
             words={typeWriterWords} 
-            className="whitespace-nowrap text-sm sm:text-lg md:text-2xl max-w-2xl" 
+            className="text-xl md:text-2xl max-w-2xl" 
           />
         </div>
         
-        {/* <div className="flex flex-wrap justify-center gap-4 mt-8 pointer-events-auto">
+        {/* <div className="flex flex-wrap justify-center gap-4 mt-8">
           <Link href="/courses" className="px-8 py-3.5 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/30 transition-all active:scale-95">
             Explore Courses
           </Link>
