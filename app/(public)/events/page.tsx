@@ -1,102 +1,155 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import PastEventCard, { EventData } from "@/components/events/PastEventCard";
 
 export default function EventsPage() {
-  // Dummy data curated for AI/ML and Tech teaching events
   const pastEvents: EventData[] = [
     {
       id: "ev-1",
       title: "Applied Machine Learning Bootcamp",
+      eventType: "Bootcamp",
       date: "Feb 10, 2026",
       time: "10:00 AM - 4:00 PM",
       venue: "MGM College of Engineering, Navi Mumbai",
+      speaker: "Dr. Arvind Mehta",
+      attendees: "120+ attended",
+      tags: ["Python", "Scikit-Learn", "Data Viz"],
       description: "A comprehensive bootcamp guiding students through data preprocessing, model training, and deploying ML algorithms using Python and Scikit-Learn.",
       imageGradient: "from-blue-500 to-indigo-600"
     },
     {
       id: "ev-2",
       title: "AI for Web Developers: LLM Integration",
+      eventType: "Masterclass",
       date: "Jan 22, 2026",
       time: "1:00 PM - 5:00 PM",
       venue: "Virtual Event (Zoom)",
+      speaker: "Priya Sharma",
+      attendees: "250+ attended",
+      tags: ["Next.js", "OpenAI", "LangChain"],
       description: "Taught web developers how to integrate Large Language Models (like OpenAI and Gemini APIs) into Next.js applications to build smart tools.",
       imageGradient: "from-emerald-400 to-teal-600"
     },
     {
       id: "ev-3",
-      title: "Deep Learning & Neural Networks Masterclass",
+      title: "Deep Learning & Neural Networks",
+      eventType: "Workshop",
       date: "Dec 05, 2025",
       time: "9:00 AM - 3:00 PM",
       venue: "Pune Institute of Technology",
+      speaker: "Rohan Desai",
+      attendees: "80+ attended",
+      tags: ["TensorFlow", "PyTorch", "Keras"],
       description: "An intensive masterclass on building and tuning deep neural networks from scratch using TensorFlow and PyTorch for real-world datasets.",
       imageGradient: "from-purple-500 to-fuchsia-600"
     },
     {
       id: "ev-4",
       title: "Computer Vision & Autonomous Systems",
+      eventType: "Hackathon",
       date: "Nov 18, 2025",
       time: "10:00 AM - 2:00 PM",
       venue: "IIT Bombay, Mumbai",
+      speaker: "Vikram Singh",
+      attendees: "300+ attended",
+      tags: ["OpenCV", "YOLOv8", "Robotics"],
       description: "Hands-on workshop exploring OpenCV, image processing, and object detection models used in modern autonomous robotics and drones.",
       imageGradient: "from-orange-400 to-red-500"
     }
   ];
 
-  return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-[#050505] text-black dark:text-white transition-colors duration-300 pt-32 pb-20 px-6 overflow-hidden">
-      
-      {/* Background Ambient Glow */}
-      <div className="fixed top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-500/10 dark:bg-blue-600/10 blur-[120px] rounded-[100%] pointer-events-none -z-10" />
+  const [filter, setFilter] = useState("All");
+  const categories = ["All", "Bootcamp", "Masterclass", "Workshop", "Hackathon"];
 
+  const filteredEvents = filter === "All" 
+    ? pastEvents 
+    : pastEvents.filter(event => event.eventType === filter);
+
+  return (
+    <div className="min-h-screen bg-zinc-50 dark:bg-[#050505] text-black dark:text-white transition-colors duration-300 pt-20 pb-20 px-6 overflow-hidden">
+      
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         
-        {/* Header Section */}
+        {/* Simple Header */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }} 
+          initial={{ opacity: 0, y: 10 }} 
           animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
             Events & Workshops
           </h1>
-          <p className="text-zinc-600 dark:text-zinc-400 text-lg font-medium max-w-2xl mx-auto">
-            Discover our past bootcamps and masterclasses designed to equip students with cutting-edge AI, Machine Learning, and Cloud technologies.
+          <p className="text-zinc-600 dark:text-zinc-400 text-lg max-w-2xl mx-auto">
+            Discover our past bootcamps, masterclasses, and hands-on sessions.
           </p>
         </motion.div>
 
-        {/* Events Grid */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-24">
-          {pastEvents.map((event, index) => (
-            <motion.div
-              key={event.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <PastEventCard event={event} />
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Host Event Call To Action */}
+        {/* Clean, Accessible Filter Tabs */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="w-full max-w-4xl bg-blue-600 dark:bg-blue-900 rounded-3xl p-8 md:p-12 text-center shadow-xl flex flex-col items-center"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex flex-wrap justify-center gap-2 sm:gap-6 mb-12 border-b border-zinc-200 dark:border-zinc-800 w-full max-w-3xl"
         >
-          <h2 className="text-3xl font-bold text-white mb-4">Want to Host a Brevitus Event?</h2>
-          <p className="text-blue-100 mb-8 max-w-xl">
-            Bring industry-grade tech training directly to your campus. Partner with us to conduct high-impact hackathons and AI/ML skill-building workshops.
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              className={`pb-3 px-2 text-sm sm:text-base font-semibold transition-colors relative ${
+                filter === cat
+                  ? "text-blue-600 dark:text-blue-400"
+                  : "text-zinc-500 hover:text-black dark:hover:text-white"
+              }`}
+            >
+              {cat}
+              {filter === cat && (
+                <motion.div 
+                  layoutId="activeTab"
+                  className="absolute bottom-[-1px] left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400"
+                />
+              )}
+            </button>
+          ))}
+        </motion.div>
+
+        {/* Events Grid */}
+        <motion.div layout className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-24">
+          <AnimatePresence mode="popLayout">
+            {filteredEvents.map((event, index) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                key={event.id}
+              >
+                <PastEventCard event={event} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Clean Call To Action Box */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="w-full max-w-4xl bg-white dark:bg-[#0a0a0a] border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 sm:p-12 text-center shadow-sm flex flex-col items-center"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">Want to Host a Brevitus Event?</h2>
+          <p className="text-zinc-600 dark:text-zinc-400 mb-8 max-w-xl">
+            Bring industry-grade tech training directly to your campus. Partner with us to conduct high-impact hackathons and skill-building workshops.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <button className="px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-zinc-50 transition-colors shadow-lg active:scale-95">
-              Partner With Us
+            <button className="px-6 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors">
+              {/*Partner With Us*/}
+              Host an Event at Your Campus
             </button>
-            <button className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-xl hover:bg-white/10 transition-colors active:scale-95">
+            <button className="px-6 py-3 bg-transparent border border-zinc-300 dark:border-zinc-700 text-black dark:text-white font-bold rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors">
               Explore Our Courses
             </button>
           </div>

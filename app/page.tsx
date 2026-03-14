@@ -9,7 +9,7 @@ import AboutUsSection from "@/components/home/AboutUsSection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center overflow-hidden" suppressHydrationWarning={true}>
+    <div className="flex flex-col items-center overflow-hidden -mt-9" suppressHydrationWarning={true}>
       <HeroSection />
       <WhatWeDoSection />
       <QuickStatsSection />
