@@ -12,6 +12,7 @@ export interface FeatureCardProps {
   category?: string;       // Featured project data
   techStack?: string[];    // Featured project data
   placeholderGradient?: string; // Featured project data
+  tag?: string;            // NEW: Used for filtering (e.g., "Student Project", "Research Project")
 }
 
 export default function FeatureCard({ 
@@ -21,7 +22,8 @@ export default function FeatureCard({
   icon, 
   category, 
   techStack, 
-  placeholderGradient 
+  placeholderGradient,
+  tag 
 }: FeatureCardProps) {
   
   // Display whichever description prop is passed
@@ -40,6 +42,14 @@ export default function FeatureCard({
       {/* Render Project Style Gradient if data exists */}
       {placeholderGradient && (
         <div className={`w-full h-48 sm:h-56 rounded-2xl bg-gradient-to-br ${placeholderGradient} mb-6 shadow-inner flex items-center justify-center overflow-hidden relative`}>
+          
+          {/* Tag Badge overlay */}
+          {tag && (
+            <div className="absolute top-4 left-4 bg-white/90 dark:bg-black/90 backdrop-blur-md px-3 py-1 rounded-md text-xs font-bold text-black dark:text-white shadow-sm tracking-wider z-20">
+              {tag}
+            </div>
+          )}
+
           <div className="absolute inset-0 bg-black/10 dark:bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
           <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center transform group-hover:scale-110 transition-transform duration-500">
             <IconArrowRight size={24} className="text-white -rotate-45" />
@@ -49,8 +59,13 @@ export default function FeatureCard({
 
       {/* Render Simple Icon Style if data exists and no gradient is passed */}
       {icon && !placeholderGradient && (
-        <div className="w-16 h-16 bg-zinc-100 dark:bg-zinc-900 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center mb-8 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white dark:group-hover:bg-blue-600 dark:group-hover:text-white group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-blue-500/30 group-hover:-rotate-3">
+        <div className="relative w-16 h-16 bg-zinc-100 dark:bg-zinc-900 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center mb-8 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white dark:group-hover:bg-blue-600 dark:group-hover:text-white group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-blue-500/30 group-hover:-rotate-3">
           {icon}
+          {tag && (
+            <div className="absolute -top-3 -right-3 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-full text-[10px] font-bold">
+              {tag}
+            </div>
+          )}
         </div>
       )}
 
