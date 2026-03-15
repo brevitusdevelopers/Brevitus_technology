@@ -33,7 +33,7 @@ export const featuredProjects: FeaturedProject[] = [
     description: "An Agentic AI-based automated news workflow that autonomously gathers, filters, summarizes, and delivers personalized news updates every morning, demonstrating real-world applications of autonomous AI.",
     techStack: ["Agentic AI", "LLMs", "Python", "Automation APIs"],
     placeholderGradient: "from-purple-500 to-indigo-600",
-    tag: "Student Project",
+    tag: "Capstone Project",
   },
   {
     title: "Student Performance AI Agent",
@@ -41,7 +41,7 @@ export const featuredProjects: FeaturedProject[] = [
     description: "An Agentic AI-based student performance monitoring system that autonomously analyzes academic data, tracks learning progress, and generates actionable, personalized performance insights.",
     techStack: ["Agentic AI", "Data Analytics", "Machine Learning", "Python"],
     placeholderGradient: "from-emerald-400 to-teal-600",
-    tag: "Student Project",
+    tag: "Capstone Project",
   },
 
   // --- NEWLY ADDED PROJECTS ---

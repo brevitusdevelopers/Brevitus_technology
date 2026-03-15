@@ -14,7 +14,7 @@ export default function FeaturedWorkSection() {
   const [filter, setFilter] = useState("All");
   
   // Extract categories to display (Adding "All" to the list of unique tags)
-  const categories = ["All", "Student Project", "Research Project"];
+  const categories = ["All", "Student Project", "Research Project","Capstone Project"];
 
   // Filter the projects based on the selected tag
   const filteredProjects = filter === "All" 

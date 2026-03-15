@@ -1,12 +1,12 @@
 "use client";
 
 import { motion ,Variants} from "framer-motion";
+import Image from "next/image";
 import { 
   IconBriefcase,
   IconCode,
   IconUsers,
-  IconAward,
-  IconCertificate
+  IconAward
 } from "@tabler/icons-react";
 import InternshipCard, { InternshipData } from "@/components/internships/InternshipCard";
 
@@ -177,7 +177,7 @@ export default function InternshipsPage() {
           </div>
         </motion.section>
 
-        {/* Certificate Display (Clean) */}
+        {/* Certificate Display (Updated with Image) */}
         <motion.section 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -194,12 +194,15 @@ export default function InternshipsPage() {
 
           {/* Minimalist Certificate Presentation Frame */}
           <div className="w-full relative p-2 sm:p-6 rounded-[2rem] bg-white dark:bg-[#0a0a0a] border border-zinc-200 dark:border-zinc-800 shadow-sm overflow-hidden">
-            <div className="relative z-10 w-full aspect-[1.414/1] md:aspect-video bg-zinc-50 dark:bg-[#050505] rounded-xl flex flex-col items-center justify-center border border-dashed border-zinc-300 dark:border-zinc-700 p-8 transition-colors hover:border-blue-400 dark:hover:border-blue-500 group cursor-default">
-              <IconCertificate size={56} className="text-zinc-300 dark:text-zinc-700 mb-4 group-hover:scale-110 group-hover:text-blue-500 transition-all duration-500" stroke={1.5} />
-              <h4 className="text-xl font-bold text-zinc-500 dark:text-zinc-500 mb-2">Sample Certificate</h4>
-              <p className="text-sm text-zinc-400 dark:text-zinc-600 text-center max-w-sm">
-                Your high-resolution digital certificate will be displayed here, ready to be added to your LinkedIn profile.
-              </p>
+            <div className="relative z-10 w-full aspect-[1.414/1] md:aspect-[16/10] bg-zinc-50 dark:bg-[#050505] rounded-xl flex items-center justify-center border border-zinc-200 dark:border-zinc-800 overflow-hidden transition-colors group cursor-default">
+              
+              <Image 
+                src="/assets/certificate.png" 
+                alt="Sample Internship Certificate"
+                fill
+                className="object-contain p-2 md:p-4 group-hover:scale-[1.02] transition-transform duration-500"
+              />
+              
             </div>
           </div>
         </motion.section>
