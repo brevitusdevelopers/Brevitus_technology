@@ -1,52 +1,31 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { IconArrowRight } from "@tabler/icons-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 
 // Imports
-// Note: Adjust the import paths depending on your exact folder structure
 import { featuredProjects } from "@/lib/featuredProjectsData";
 import FeatureCard from "./FeatureCard";
 
-// Register GSAP Plugin
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export default function FeaturedWorkSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+  // State for the pill filter navigation
+  const [filter, setFilter] = useState("All");
+  
+  // Extract categories to display (Adding "All" to the list of unique tags)
+  const categories = ["All", "Student Project", "Research Project","Capstone Project"];
 
-  // GSAP Scroll Animation for the section entering the viewport
-  useGSAP(() => {
-    gsap.fromTo(
-      cardsRef.current?.children ? Array.from(cardsRef.current.children) : [],
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%", // Triggers when the top of the section hits 80% down the viewport
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
-  }, { scope: sectionRef });
+  // Filter the projects based on the selected tag
+  const filteredProjects = filter === "All" 
+    ? featuredProjects 
+    : featuredProjects.filter(project => project.tag === filter);
 
   return (
-    <section ref={sectionRef} className="w-full max-w-7xl px-6 py-24 mx-auto overflow-hidden">
+    <section className="w-full max-w-7xl px-6 py-24 mx-auto overflow-hidden">
       
       {/* Header Area */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -79,15 +58,53 @@ export default function FeaturedWorkSection() {
         </motion.div>
       </div>
 
-      {/* Projects Grid mapping with FeatureCard */}
-      <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-10">
-        {featuredProjects.map((project, index) => (
-          /* Wrap the FeatureCard in a div to allow GSAP to animate it seamlessly */
-          <div key={index} className="opacity-0 translate-y-[50px]">
-            <FeatureCard index={index} {...project} />
-          </div>
+      {/* Clean, Accessible Filter Tabs (Matches Events Page) */}
+      <motion.div 
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="flex flex-wrap gap-2 sm:gap-6 mb-12 border-b border-zinc-200 dark:border-zinc-800 w-full"
+      >
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setFilter(cat)}
+            className={`pb-3 px-2 text-sm sm:text-base font-semibold transition-colors relative ${
+              filter === cat
+                ? "text-blue-600 dark:text-blue-400"
+                : "text-zinc-500 hover:text-black dark:hover:text-white"
+            }`}
+          >
+            {cat}
+            {filter === cat && (
+              <motion.div 
+                layoutId="activeFeaturedTab"
+                className="absolute bottom-[-1px] left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400"
+              />
+            )}
+          </button>
         ))}
-      </div>
+      </motion.div>
+
+      {/* Projects Grid mapping with Framer Motion AnimatePresence for smooth filtering */}
+      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-10">
+        <AnimatePresence mode="popLayout">
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              key={project.title} // Ensure key is unique so framer motion can track them during filters
+            >
+              <FeatureCard index={index} {...project} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+      
     </section>
   );
 }
