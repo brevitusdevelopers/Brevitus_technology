@@ -1,5 +1,6 @@
 import "./globals.css";
 import NavigationBar from "@/components/home/NavigationBar"; 
+import Footer from "@/components/home/Footer"; // Import the newly created Footer
 import { ThemeProvider } from "@/components/theme-provider";
 import { Inter } from "next/font/google"; // 1. Import your desired font
 
@@ -30,10 +31,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange={false}
         >
-          <NavigationBar />
-          
-          <div className="pt-24 min-h-screen">
-            {children}
+          {/* Flex column setup to ensure footer stays at the bottom */}
+          <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
+            <NavigationBar />
+            
+            {/* flex-grow ensures this area expands, pushing the footer down if the page is short */}
+            <main className="flex-grow pt-24 pb-12">
+              {children}
+            </main>
+
+            {/* Place the Footer component at the bottom */}
+            <Footer />
           </div>
         </ThemeProvider>
       </body>
