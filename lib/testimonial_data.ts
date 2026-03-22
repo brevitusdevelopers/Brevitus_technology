@@ -8,32 +8,44 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     id: "1",
-    name: "Aditya Sharma",
-    college: "Indian Institute of Technology, Bombay",
-    quote: "Brevitus Technology completely changed my approach to learning. The hands-on projects and mentorship helped me secure my first tech job in a top product-based company!"
+    name: "Sunroy Rodrigues",
+    college: "SLRT College, Mira Road",
+    quote: "You guided us beyond the curriculum, showing us how to learn through curiosity. Your sessions inspired us to think beyond textbooks and explore new ideas with confidence. Truly grateful for your mentorship!"
   },
   {
     id: "2",
-    name: "Priya Desai",
-    college: "Pune Institute of Computer Technology",
-    quote: "The internship program bridged the massive gap between academic theory and actual industry requirements. I finally feel confident building scalable full-stack applications."
+    name: "Swati Mourya",
+    college: "Deloitte", // Used company name as subtitle
+    quote: "Being mentored by such a skilled teacher was a privilege. I followed your advice, worked hard, and landed a job at Deloitte! Your ML sessions were instrumental in cracking the interview."
   },
   {
     id: "3",
-    name: "Rohan Verma",
-    college: "MGM College of Engineering and Technology",
-    quote: "The mentors here don't just teach you syntax; they teach you how to think like an engineer. The research and innovation support brought my startup idea to life."
+    name: "Hrithik Singh",
+    college: "MGM CET",
+    quote: "Joining Brevitus to improve my data science skills was totally worth it! The interactive sessions, digital whiteboards, end-to-end projects, and resume-building support made the overall journey perfect."
   },
   {
     id: "4",
-    name: "Ananya Iyer",
-    college: "Vellore Institute of Technology",
-    quote: "I highly recommend the Advanced Web Development course. The curriculum is perfectly structured, and the community of builders here is incredibly inspiring."
+    name: "Ananya Pandey",
+    college: "MGM CET",
+    quote: "Machine learning used to feel intimidating, but the teaching approach changed everything. Complex concepts were visualized and connected to real-world examples smoothly, making me genuinely enjoy coding."
   },
   {
     id: "5",
-    name: "Vikram Singh",
-    college: "Delhi Technological University",
-    quote: "From learning the fundamentals to deploying cloud-native applications, my journey with Brevitus has been nothing short of transformative. A must for ambitious students."
+    name: "Sayali Sawant",
+    college: "Engineering Student", // Added generic title since college wasn't specified
+    quote: "Your sessions built our strong fundamentals in ML and Python while giving insights into real-world applications. Your practical approach perfectly bridged the gap between theory and practice."
+  },
+  {
+    id: "6",
+    name: "Aron Mandecona",
+    college: "SLRT College, Mira Road",
+    quote: "Thank you for your outstanding teaching, mentorship, patience, and clarity. Even in a short time, your guidance left a lasting positive impact on our learning journey."
+  },
+  {
+    id: "7",
+    name: "Sonal",
+    college: "SLRT College, Mira Road",
+    quote: "It was a wonderful learning experience. The superb support and guidance during the sessions taught me so much. I will never forget the impact of your teaching!"
   }
 ];

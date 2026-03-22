@@ -11,6 +11,7 @@ export interface InternshipData {
   type: string;
   skills: string[];
   description: string;
+  pdfLink?: string; // Added pdfLink to the interface
 }
 
 const itemVariants: Variants = {
@@ -72,9 +73,17 @@ export default function InternshipCard({ internship }: { internship: InternshipD
 
       {/* Action Buttons (100% width on mobile, split on desktop) */}
       <div className="flex flex-col sm:flex-row gap-3 mt-auto shrink-0">
-        <button className="w-full sm:w-auto flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-transparent border border-zinc-300 dark:border-zinc-700 text-black dark:text-white text-sm font-bold rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors active:scale-95">
+        
+        {/* Dynamic Syllabus Link embedded as a button */}
+        <a 
+          href={internship.pdfLink || "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full sm:w-auto flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-transparent border border-zinc-300 dark:border-zinc-700 text-black dark:text-white text-sm font-bold rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors active:scale-95 cursor-pointer"
+        >
           <IconDownload size={18} /> Syllabus
-        </button>
+        </a>
+
         <button className="w-full sm:w-auto flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white text-sm font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-sm hover:shadow-md active:scale-95">
           Apply Now <IconArrowRight size={18} />
         </button>

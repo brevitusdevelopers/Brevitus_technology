@@ -1,6 +1,6 @@
 "use client";
 
-import { motion ,Variants} from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import { 
   IconBriefcase,
@@ -24,33 +24,17 @@ export default function InternshipsPage() {
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
   };
 
+  // Replaced with the new Agentic AI Internship data and added pdfLink natively
   const internships: InternshipData[] = [
     {
       id: 1,
-      domain: "Web Development",
-      title: "Frontend Engineering Intern",
-      duration: "3 Months",
-      type: "Free / Paid Tracks",
-      skills: ["React", "Next.js", "Tailwind CSS"],
-      description: "Build scalable web applications and learn modern frontend architecture by working on live, production-ready projects.",
-    },
-    {
-      id: 2,
       domain: "Artificial Intelligence",
-      title: "Machine Learning & AI Intern",
+      title: "Academic Internship in Agentic AI",
       duration: "3 Months",
-      type: "Free / Paid Tracks",
-      skills: ["Python", "TensorFlow", "Pandas"],
-      description: "Work on real-world datasets to build, train, and deploy predictive models, computer vision systems, and AI agents.",
-    },
-    {
-      id: 3,
-      domain: "Cloud Computing",
-      title: "Cloud & DevOps Intern",
-      duration: "3 Months",
-      type: "Free / Paid Tracks",
-      skills: ["AWS", "Docker", "CI/CD"],
-      description: "Learn to design, deploy, and manage scalable cloud infrastructure while automating development workflows.",
+      type: "Academic Internship",
+      skills: ["Agentic AI", "Automation", "Decision-Making"],
+      description: "This internship introduces participants to the emerging field of Agentic AI, where intelligent systems interact with data, tools, and workflows to perform tasks autonomously. Interns will learn the concepts behind AI agents, automation, and decision-making systems. As part of an internship, students will design and develop practical AI projects, gaining hands-on experience and showcasing their skills in building real-world applications.",
+      pdfLink: "https://ik.imagekit.io/wkqezkwpg/Site%20content/Site%20content/3_month_internship.pdf?updatedAt=1774204999353" // <-- Embedded PDF link
     }
   ];
 
@@ -177,7 +161,7 @@ export default function InternshipsPage() {
           </div>
         </motion.section>
 
-        {/* Certificate Display (Updated with Image) */}
+        {/* Certificate Display */}
         <motion.section 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

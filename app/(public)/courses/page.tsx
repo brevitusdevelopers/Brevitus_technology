@@ -10,6 +10,7 @@ export default function CoursesPage() {
       suitableFor: "Students and Faculties",
       overview:
         "Step into the future of automation by creating Agentic AI workflows using no-code tools. Discover how AI agents can analyse information, make decisions, and execute tasks independently. Learn how to design smart workflows where AI agents collaborate with tools to solve problems autonomously.",
+      pdfLink: "https://ik.imagekit.io/wkqezkwpg/Site%20content/Site%20content/agentic%20ai%20.pdf?updatedAt=1774204999482", // Replace with your actual ImageKit link
     },
     {
       title: "Launching yourself from campus to corporate",
@@ -17,6 +18,7 @@ export default function CoursesPage() {
       suitableFor: "Final year students",
       overview:
         "Moving from campus to corporate is more than getting a job — it is about developing the mindset of a professional. This program equips students with the skills, discipline, and confidence needed to thrive in the workplace. Learn how to transform academic potential into corporate success.",
+      pdfLink: "https://ik.imagekit.io/wkqezkwpg/Site%20content/Site%20content/career_oriented_prgm.pdf?updatedAt=1774204999482", 
     },
     {
       title: "Learn Business Intelligence using Power BI",
@@ -24,6 +26,7 @@ export default function CoursesPage() {
       suitableFor: "Students",
       overview:
         "Data is valuable only when it drives decisions. This session introduces the core concepts of Business Intelligence and shows how Power BI can be used to analyse data, create visual reports, and uncover insights that support smarter business decisions.",
+      pdfLink: "https://ik.imagekit.io/wkqezkwpg/Site%20content/Site%20content/power_bi.pdf?updatedAt=1774204999359", 
     },
     {
       title: "Building Next Generation AI ChatBot with RAG Model",
@@ -31,6 +34,7 @@ export default function CoursesPage() {
       suitableFor: "Students and Faculties",
       overview:
         "Discover how modern AI chatbots go beyond simple responses using the RAG model. This session introduces the architecture behind intelligent conversational systems that retrieve information and generate accurate answers. Participants will gain practical insights into building next-generation AI chatbots.",
+      pdfLink: "https://ik.imagekit.io/wkqezkwpg/Site%20content/Site%20content/rag%20model.pdf?updatedAt=1774204999389", 
     },
   ];
 
@@ -104,8 +108,10 @@ export default function CoursesPage() {
               {/* Action Buttons */}
               <div className="flex flex-col gap-3 mt-auto">
                 <a
-                  href="https://drive.google.com/uc?export=download&id=1Z2jW6YMCkatbfqNg-pVYxt34vpFPIDeh"
-                  download="curriculum.pdf"
+                  href={course.pdfLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
                 >
                   <button className="w-full px-4 py-2.5 border border-zinc-300 dark:border-zinc-700 text-sm font-semibold rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors">
                     Download Curriculum
