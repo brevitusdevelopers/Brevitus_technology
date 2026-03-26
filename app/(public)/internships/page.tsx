@@ -8,7 +8,10 @@ import {
   IconUsers,
   IconAward
 } from "@tabler/icons-react";
-import InternshipCard, { InternshipData } from "@/components/internships/InternshipCard";
+import InternshipCard from "@/components/internships/InternshipCard";
+
+// IMPORT YOUR NEW DATA FILE HERE
+import { internshipsData } from "@/lib/internshipsData"; 
 
 export default function InternshipsPage() {
   const containerVariants: Variants = {
@@ -23,20 +26,6 @@ export default function InternshipsPage() {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
   };
-
-  // Replaced with the new Agentic AI Internship data and added pdfLink natively
-  const internships: InternshipData[] = [
-    {
-      id: 1,
-      domain: "Artificial Intelligence",
-      title: "Academic Internship in Agentic AI",
-      duration: "3 Months",
-      type: "Academic Internship",
-      skills: ["Agentic AI", "Automation", "Decision-Making"],
-      description: "This internship introduces participants to the emerging field of Agentic AI, where intelligent systems interact with data, tools, and workflows to perform tasks autonomously. Interns will learn the concepts behind AI agents, automation, and decision-making systems. As part of an internship, students will design and develop practical AI projects, gaining hands-on experience and showcasing their skills in building real-world applications.",
-      pdfLink: "https://ik.imagekit.io/wkqezkwpg/Site%20content/Site%20content/3_month_internship.pdf?updatedAt=1774204999353" // <-- Embedded PDF link
-    }
-  ];
 
   const features = [
     { icon: <IconBriefcase size={28} />, title: "Project-based", desc: "Work on real industry use-cases." },
@@ -119,7 +108,8 @@ export default function InternshipsPage() {
             viewport={{ once: true, margin: "-50px" }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
           >
-            {internships.map((internship) => (
+            {/* Map over the imported internshipsData array */}
+            {internshipsData.map((internship) => (
               <InternshipCard key={internship.id} internship={internship} />
             ))}
           </motion.div>

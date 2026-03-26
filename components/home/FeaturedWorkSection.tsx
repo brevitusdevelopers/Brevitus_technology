@@ -49,7 +49,7 @@ export default function FeaturedWorkSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <Link 
-            href="/our-work" 
+            href="" 
             className="group flex items-center gap-2 px-6 py-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-black dark:text-white font-bold rounded-full hover:border-blue-500 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all active:scale-95 whitespace-nowrap"
           >
             View All Work 

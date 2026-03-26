@@ -173,10 +173,10 @@ export default function AboutUsSection() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 blur-[80px] rounded-full pointer-events-none" />
           
           <div className="relative z-10 flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
-            {/* Image Placeholder */}
+            {/* Image Placeholder
             <div className="shrink-0 w-48 h-48 md:w-56 md:h-56 rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-500 flex items-center justify-center shadow-2xl shadow-blue-500/20">
               <IconUsers size={80} stroke={1} className="text-white/80" />
-            </div>
+            </div> */}
 
             {/* Founder Text Content */}
             <div className="flex-1 text-center lg:text-left">
@@ -187,7 +187,7 @@ export default function AboutUsSection() {
                 </h3>
               </div>
               
-              <div className="space-y-4 text-zinc-600 dark:text-zinc-400 text-base md:text-lg leading-relaxed font-medium">
+              <div className="space-y-4 text-zinc-600 dark:text-zinc-400 text-base md:text-lg leading-relaxed font-medium text-justify">
                 <p>
                   The founder of Brevitus Technology is a visionary educator and technology professional who believes 
                   that education should ignite curiosity, build confidence, and create real-world impact beyond classrooms 
