@@ -16,9 +16,9 @@ export const internshipsData: InternshipData[] = [
   {
     id: 2,
     domain: "Data Engineering",
-    title: "Data Engineering Internship",
+    title: "Academic Internship",
     duration: "3 Months",
-    type: "Industry Training",
+    type: "Academic Internship",
     skills: ["SQL", "Python", "Apache Spark", "Apache Airflow", "ETL"],
     description: "This internship is designed to transform students into job-ready Data Engineering professionals through hands-on, industry-focused training. Learners gain practical expertise in SQL, Python, data processing, and ETL pipeline development, along with exposure to Big Data concepts and scalable data handling using tools like Apache Spark. The program also covers workflow automation and orchestration using Apache Airflow, enabling students to build and manage real-world data pipelines. The program concludes with resume building, interview preparation, and an Internship Completion Certificate, making students ready for entry-level roles in Data Engineering and Analytics.",
     pdfLink: "https://ik.imagekit.io/wkqezkwpg/Site%20content/Site%20content/data_engineering_internship.pdf"
