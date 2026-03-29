@@ -106,7 +106,7 @@ export default function LegalModal({ isOpen, onClose, type }: LegalModalProps) {
                     <p>Your personal data is collected and processed only for the following purpose:</p>
                     <ul className="list-disc pl-5 space-y-1 mt-2">
                       <li>To respond to your enquiries</li>
-                      <li>To communicate with you regarding course request</li>
+                      <li>To communicate with you regarding your course request</li>
                     </ul>
                   </div>
 
@@ -174,7 +174,7 @@ export default function LegalModal({ isOpen, onClose, type }: LegalModalProps) {
                   
                   <div>
                     <h3 className="text-lg font-bold text-black dark:text-white mb-2">5. Intellectual Property</h3>
-                    <p>All content on this website (text, design, logos, etc.) is the property of brevitus technology unless otherwise stated. You may not copy, reproduce, or distribute content without prior permission.</p>
+                    <p>All content on this website (text, design, logos, etc.) is the property of Brevitus Technology unless otherwise stated. You may not copy, reproduce, or distribute content without prior permission.</p>
                   </div>
                   
                   <div>
