@@ -42,8 +42,6 @@ export default function Footer() {
               <div className="flex items-center gap-3 mt-2">
                 {[
                   { icon: <IconBrandLinkedin size={20} />, link: "#", label: "LinkedIn" },
-                  { icon: <IconBrandTwitter size={20} />, link: "#", label: "Twitter" },
-                  { icon: <IconBrandGithub size={20} />, link: "#", label: "GitHub" },
                   { icon: <IconBrandInstagram size={20} />, link: "#", label: "Instagram" },
                 ].map((social, idx) => (
                   <a 
@@ -76,14 +74,14 @@ export default function Footer() {
               </nav>
             </div>
 
-            {/* Programs */}
+            {/* Discover Section (Replaced redundant Programs links) */}
             <div className="flex flex-col gap-4">
-              <h3 className="font-bold text-black dark:text-white text-lg tracking-tight">Programs</h3>
+              <h3 className="font-bold text-black dark:text-white text-lg tracking-tight">Discover</h3>
               <nav className="flex flex-col gap-3">
-                <Link href="/internships" className="text-zinc-600 dark:text-zinc-400 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors w-max">Web Development</Link>
-                <Link href="/internships" className="text-zinc-600 dark:text-zinc-400 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors w-max">Artificial Intelligence</Link>
-                <Link href="/internships" className="text-zinc-600 dark:text-zinc-400 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors w-max">Cloud & DevOps</Link>
-                <Link href="/events" className="text-zinc-600 dark:text-zinc-400 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors w-max">Workshops & Events</Link>
+                <Link href="" className="text-zinc-600 dark:text-zinc-400 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors w-max">Featured Projects</Link>
+                <Link href="/events" className="text-zinc-600 dark:text-zinc-400 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors w-max">Host an Event</Link>
+                <Link href="/internships" className="text-zinc-600 dark:text-zinc-400 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors w-max">Earn a Credential</Link>
+                <Link href="/home" className="text-zinc-600 dark:text-zinc-400 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors w-max">About Us</Link>
               </nav>
             </div>
 
@@ -95,7 +93,7 @@ export default function Footer() {
                   <div className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors shrink-0">
                     <IconMail size={16} />
                   </div>
-                  <span className="text-sm font-medium">hello@brevitus.com</span>
+                  <span className="text-sm font-medium">brevitusdevelopers@gmail.com</span>
                 </a>
                 <div className="flex items-center gap-3 text-zinc-600 dark:text-zinc-400">
                   <div className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center shrink-0">
