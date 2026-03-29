@@ -40,7 +40,7 @@ export default function LegalModal({ isOpen, onClose, type }: LegalModalProps) {
 
   const isPrivacy = type === "privacy";
   const title = isPrivacy ? "Privacy Policy" : "Terms of Service";
-  const lastUpdated = "October 24, 2023";
+  const lastUpdated = "March 29, 2026";
 
   return (
     <AnimatePresence>
@@ -93,74 +93,120 @@ export default function LegalModal({ isOpen, onClose, type }: LegalModalProps) {
               {isPrivacy ? (
                 <>
                   <p>
-                    At Brevitus Technology, accessible from our platform, one of our main priorities is the privacy of our visitors and students. This Privacy Policy document contains types of information that is collected and recorded by Brevitus Technology and how we use it.
+                    We (Brevitus Technology) are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information.
                   </p>
                   
                   <div>
                     <h3 className="text-lg font-bold text-black dark:text-white mb-2">1. Information We Collect</h3>
-                    <p>The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information. If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message and/or attachments you may send us.</p>
+                    <p>We may collect personal information such as your name, email address, phone number, and any other details you provide through our enquiry form.</p>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">2. How We Use Your Information</h3>
-                    <ul className="list-disc pl-5 space-y-1">
-                      <li>Provide, operate, and maintain our educational platform.</li>
-                      <li>Improve, personalize, and expand our course offerings.</li>
-                      <li>Understand and analyze how you use our services to optimize your learning journey.</li>
-                      <li>Develop new products, services, features, and functionality.</li>
-                      <li>Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates.</li>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">2. Purpose of Processing</h3>
+                    <p>Your personal data is collected and processed only for the following purpose:</p>
+                    <ul className="list-disc pl-5 space-y-1 mt-2">
+                      <li>To respond to your enquiries</li>
+                      <li>To communicate with you regarding your course request</li>
                     </ul>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">3. Log Files and Cookies</h3>
-                    <p>Brevitus Technology follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. Like any other website, Brevitus Technology uses "cookies" to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited.</p>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">3. Consent</h3>
+                    <p>By submitting the enquiry form, you provide your consent for the collection and processing of your personal data for the stated purpose. You have the right to withdraw your consent at any time by contacting us.</p>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">4. Data Security</h3>
-                    <p>We take the security of your data seriously. We implement industry-standard security measures to prevent unauthorized access, disclosure, modification, or unauthorized destruction of the data you share with us. However, please be aware that no method of transmission over the internet, or method of electronic storage is 100% secure.</p>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">4. Third-Party Processing</h3>
+                    <p>We use Google LLC (Google Forms) to collect and store enquiry data. Your information may be processed on secure servers managed by Google in accordance with their privacy policies.</p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">5. Data Sharing</h3>
+                    <p>We do not sell, rent, or share your personal data with third parties, except where required by law.</p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">6. Data Retention</h3>
+                    <p>We retain your personal data only for as long as necessary to fulfill the purpose for which it was collected or as required under applicable laws.</p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">7. Data Security</h3>
+                    <p>We implement reasonable security safeguards to protect your personal data against unauthorized access, disclosure, or misuse.</p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">8. Updates to This Policy</h3>
+                    <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.</p>
                   </div>
                 </>
               ) : (
                 <>
                   <p>
-                    Welcome to Brevitus Technology! These terms and conditions outline the rules and regulations for the use of Brevitus Technology's educational platform and services.
-                  </p>
-                  <p>
-                    By accessing this website and enrolling in our programs, we assume you accept these terms and conditions. Do not continue to use Brevitus Technology if you do not agree to take all of the terms and conditions stated on this page.
+                    By accessing or using this website, you agree to comply with and be bound by the following Terms of Service.
                   </p>
 
                   <div>
-                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">1. Educational Services & Licensing</h3>
-                    <p>Unless otherwise stated, Brevitus Technology and/or its licensors own the intellectual property rights for all educational material, project structures, and code bases provided on the platform. All intellectual property rights are reserved. You may access this from Brevitus Technology for your own personal educational use subjected to restrictions set in these terms and conditions.</p>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">1. Use of Website</h3>
+                    <p>This website is intended to provide general information and allow users to submit enquiries through a contact form. You agree to use this website only for lawful purposes and not for any activity that may harm the website or its users.</p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">2. No User Accounts or Transactions</h3>
+                    <p>This website does not provide user registration, login functionality, or payment processing. All interactions are limited to voluntary submission of enquiries.</p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">3. User Submissions</h3>
+                    <p>By submitting information through the enquiry form, you agree that:</p>
                     <ul className="list-disc pl-5 space-y-1 mt-2">
-                      <li>You must not republish material from Brevitus Technology.</li>
-                      <li>You must not sell, rent or sub-license material from Brevitus Technology.</li>
-                      <li>You must not reproduce, duplicate or copy course materials for commercial distribution.</li>
+                      <li>The information provided is accurate and not misleading</li>
+                      <li>You have the right to share the information</li>
+                      <li>You will not submit unlawful, offensive, or harmful content</li>
+                    </ul>
+                    <p className="mt-2">We reserve the right to ignore or remove inappropriate submissions.</p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">4. Third-Party Services</h3>
+                    <p>We use Google LLC (Google Forms) to collect enquiries. Your interaction with such third-party services is also governed by their respective terms and policies.</p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">5. Intellectual Property</h3>
+                    <p>All content on this website (text, design, logos, etc.) is the property of Brevitus Technology unless otherwise stated. You may not copy, reproduce, or distribute content without prior permission.</p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">6. Limitation of Liability</h3>
+                    <p>The information provided on this website is for general purposes only. Under no circumstances shall we be liable for any direct or indirect loss arising from:</p>
+                    <ul className="list-disc pl-5 space-y-1 mt-2">
+                      <li>Use of the website</li>
+                      <li>Reliance on the information provided</li>
+                      <li>Submission of data through the enquiry form</li>
                     </ul>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">2. Student Conduct & Collaboration</h3>
-                    <p>As a community of learners and builders, we expect all participants to maintain a respectful and constructive environment. Harassment, plagiarism, or disruptive behavior during events, bootcamps, or peer collaboration sessions will result in immediate suspension of access to our services without refund.</p>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">7. Privacy</h3>
+                    <p>Your use of this website is also governed by our Privacy Policy.</p>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">3. Certification & Project Work</h3>
-                    <p>Certificates of completion are awarded entirely at the discretion of Brevitus Technology instructors based on the successful and original completion of the required capstone projects or coursework. Plagiarized project submissions will result in disqualification from the certification process.</p>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">8. Termination of Access</h3>
+                    <p>We reserve the right to restrict or block access to the website for users who violate these terms.</p>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">4. Limitation of Liability</h3>
-                    <p>In no event shall Brevitus Technology, nor any of its officers, directors and employees, be held liable for anything arising out of or in any way connected with your use of this platform whether such liability is under contract. Brevitus Technology shall not be held liable for any indirect, consequential or special liability arising out of or in any way related to your use of this Website.</p>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">9. Changes to Terms</h3>
+                    <p>We may update these Terms of Service at any time. Continued use of the website after changes constitutes acceptance of the revised terms.</p>
                   </div>
                 </>
               )}
               
               <div className="pt-6 border-t border-zinc-200 dark:border-zinc-800">
                 <p className="font-semibold text-black dark:text-white">Contact Us</p>
-                <p>If you have any questions or suggestions about our {title}, do not hesitate to contact us at <a href="mailto:hello@brevitus.com" className="text-blue-600 dark:text-blue-400 hover:underline">hello@brevitus.com</a>.</p>
+                <p>If you have any questions or suggestions about our {title}, do not hesitate to contact us at <a href="mailto:brevitusdevelopers@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline">brevitusdevelopers@gmail.com</a>.</p>
               </div>
 
             </div>

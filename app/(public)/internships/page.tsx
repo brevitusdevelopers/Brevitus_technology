@@ -171,7 +171,7 @@ export default function InternshipsPage() {
             <div className="relative z-10 w-full aspect-[1.414/1] md:aspect-[16/10] bg-zinc-50 dark:bg-[#050505] rounded-xl flex items-center justify-center border border-zinc-200 dark:border-zinc-800 overflow-hidden transition-colors group cursor-default">
               
               <Image 
-                src="/assets/certificate.png" 
+                src="https://ik.imagekit.io/wkqezkwpg/Site%20content/Site%20content/Internship_certificate_Template.png" 
                 alt="Sample Internship Certificate"
                 fill
                 className="object-contain p-2 md:p-4 group-hover:scale-[1.02] transition-transform duration-500"
