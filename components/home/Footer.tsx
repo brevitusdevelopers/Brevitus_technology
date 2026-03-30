@@ -6,6 +6,7 @@ import Link from "next/link";
 import { 
   IconBrandLinkedin, 
   IconBrandInstagram, 
+  IconBrandWhatsapp,
   IconMail, 
   IconMapPin 
 } from "@tabler/icons-react";
@@ -41,6 +42,7 @@ export default function Footer() {
                 {[
                   { icon: <IconBrandLinkedin size={20} />, link: "#", label: "LinkedIn" },
                   { icon: <IconBrandInstagram size={20} />, link: "#", label: "Instagram" },
+                  { icon: <IconBrandWhatsapp size={20} />, link: "#", label: "WhatsApp" },
                 ].map((social, idx) => (
                   <a 
                     key={idx} 
