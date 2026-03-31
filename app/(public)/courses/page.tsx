@@ -149,9 +149,15 @@ export default function CoursesPage() {
                       Download Curriculum
                     </button>
                   </a>
-                  <button className="w-full px-4 py-2.5 bg-black dark:bg-white text-white dark:text-black text-sm font-bold rounded-lg hover:opacity-80 transition-opacity">
-                    Host this Program
-                  </button>
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSe08SWkQk04BgcQbyyB0irBXhek2jdfrLq-ug3HC-o85gMUgg/viewform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="w-full px-4 py-2.5 bg-black dark:bg-white text-white dark:text-black text-sm font-bold rounded-lg hover:opacity-80 transition-opacity">
+                      Host this Program
+                    </button>
+                  </a>
                 </div>
               </motion.div>
             ))}
