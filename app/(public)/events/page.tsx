@@ -93,10 +93,14 @@ export default function EventsPage() {
             Bring industry-grade tech training directly to your campus. Partner with us to conduct high-impact hackathons and skill-building workshops.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <button className="px-6 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors">
-              {/*Partner With Us*/}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSe08SWkQk04BgcQbyyB0irBXhek2jdfrLq-ug3HC-o85gMUgg/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors"
+            >
               Host an Event at Your Campus
-            </button>
+            </a>
             <a
               href="/courses"
               className="px-6 py-3 bg-transparent border border-zinc-300 dark:border-zinc-700 text-black dark:text-white font-bold rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors flex items-center justify-center"

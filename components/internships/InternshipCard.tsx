@@ -84,9 +84,14 @@ export default function InternshipCard({ internship }: { internship: InternshipD
           <IconDownload size={18} /> Syllabus
         </a>
 
-        <button className="w-full sm:w-auto flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white text-sm font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-sm hover:shadow-md active:scale-95">
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfE05rheDzTwTu2oRZ-N_sauk2eSd3IeLjGNnqXkEr7AJ0lYw/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full sm:w-auto flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white text-sm font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-sm hover:shadow-md active:scale-95"
+        >
           Apply Now <IconArrowRight size={18} />
-        </button>
+        </a>
       </div>
     </motion.div>
   );
