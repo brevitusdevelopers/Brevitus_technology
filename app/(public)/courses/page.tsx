@@ -11,7 +11,7 @@ export default function CoursesPage() {
   const [filter, setFilter] = useState("All");
 
   // Define our custom duration categories
-  const categories = ["All", "Short Course", "Long Course"];
+  const categories = ["All", "Short Programs", "Long Programs"];
 
   // Filter logic based on the 'duration' string
   const filteredCourses = coursesData.filter(course => {
@@ -21,8 +21,9 @@ export default function CoursesPage() {
     // Flexible, Marathon, or week/month-based courses become Long Courses.
     const isShortCourse = course.duration.toLowerCase().includes("hour");
     
-    if (filter === "Short Course") return isShortCourse;
-    if (filter === "Long Course") return !isShortCourse;
+    // Updated to match the new tab names
+    if (filter === "Short Programs") return isShortCourse;
+    if (filter === "Long Programs") return !isShortCourse;
     
     return true;
   });
@@ -59,7 +60,7 @@ export default function CoursesPage() {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
-            Our Courses
+            Our Programs
           </h1>
           <p className="text-zinc-600 dark:text-zinc-400 text-lg max-w-2xl mx-auto">
             Discover our specialized tech programs and bootcamps.
