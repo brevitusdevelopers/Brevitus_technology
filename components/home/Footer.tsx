@@ -99,7 +99,7 @@ export default function Footer() {
                   <div className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center shrink-0">
                     <IconMapPin size={16} />
                   </div>
-                  <span className="text-sm font-medium leading-tight">Navi Mumbai, Maharashtra,<br/> India</span>
+                  <span className="text-sm font-medium leading-tight">Thane, Maharashtra,<br/> India</span>
                 </div>
               </div>
             </div>
