@@ -42,7 +42,7 @@ export default function Footer() {
                 {[
                   { icon: <IconBrandLinkedin size={20} />, link: "https://www.linkedin.com/in/brevitus-technology-a012993bb/", label: "LinkedIn" },
                   { icon: <IconBrandInstagram size={20} />, link: "https://www.instagram.com/brevitus_technology/", label: "Instagram" },
-                  { icon: <IconBrandWhatsapp size={20} />, link: "#", label: "WhatsApp" },
+                  { icon: <IconBrandWhatsapp size={20} />, link: "https://wa.me/919920079686", label: "WhatsApp" },
                 ].map((social, idx) => (
                   <a 
                     key={idx} 
